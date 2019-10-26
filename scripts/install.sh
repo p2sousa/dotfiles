@@ -12,9 +12,17 @@ source "./vim.sh"
 # install tmux plugin
 source "./tmux.sh"
 
+# install vim configuration
+source "./vscode.sh"
+
 # install oh-my-zsh
 if [ ! -d "${HOME}/.oh-my-zsh" ]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
+fi
+
+# install zplugin
+if [ ! -d "${HOME}/.zplugin" ]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
 fi
 
@@ -28,4 +36,4 @@ mkdir -p $ZSH_CUSTOM
 curl -l https://raw.githubusercontent.com/dracula/zsh/master/dracula.zsh-theme > "${ZSH_CUSTOM}/dracula.zsh-theme"
 
 # zsh as default shell
-chsh -s $(which zsh)
+chsh -sf $(which zsh)

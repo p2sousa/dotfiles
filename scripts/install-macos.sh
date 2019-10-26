@@ -8,19 +8,18 @@ set -e
 DIR=$(pwd)
 
 # install apps
-# for file in ${DIR}/../macos/*.sh; do
-#   bash -c $file;
-# done
-
+for file in ${DIR}/../macos/*.sh; do
+  bash -c $file;
+done
 
 # Increase keyboard speed
 defaults write -g KeyRepeat -int 1
 defaults write -g InitialKeyRepeat -int 10
 
 # Install font
-# if [ ! -f "${HOME}/Library/Fonts/Knack-Regular-NerdFont.ttf" ]; then
-#  wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Knack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf -O "~/Library/Fonts/Knack-Regular-NerdFont.ttf"
-# fi
+if [ ! -f "${HOME}/Library/Fonts/FiraCode.ttf" ]; then
+  wget https://raw.githubusercontent.com/tonsky/FiraCode/master/distr/ttf/FiraCode-Retina.ttf -O "${HOME}/Library/Fonts/FiraCode.ttf"
+fi
 
 # install iterm profile
 if [ ! -d "${DIR}/../macos/themes/iterm" ]; then
@@ -31,3 +30,4 @@ fi
 defaults write com.apple.terminal FocusFollowsMouse -bool true
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 defaults write com.googlecode.iterm2 HideTab -bool true
+defaults write com.googlecode.iterm2 "FiraCode" -string "SourceCodePro-Retina"

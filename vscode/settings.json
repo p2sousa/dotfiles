@@ -1,0 +1,35 @@
+{
+	"window.zoomLevel": 0,
+	"workbench.colorTheme": "Dracula",
+	"workbench.iconTheme": "material-icon-theme",
+	"editor.tabSize": 2,
+	"editor.rulers": [80, 120],
+	"eslint.autoFixOnSave": true,
+	"editor.formatOnSave": false,
+	"eslint.validate": [
+		{
+			"language": "javascript",
+			"autoFix": true
+		},
+		{
+			"language": "javascriptreact",
+			"autoFix": true
+		},
+		{
+			"language": "typescript",
+			"autoFix": true
+		},
+		{
+			"language": "typescriptreact",
+			"autoFix": true
+		}
+	],
+	"emmet.includeLanguages": {
+		"javascript": "javascriptreact"
+	},
+	"emmet.syntaxProfiles": {
+		"javascript": "jsx"
+	},
+	"javascript.updateImportsOnFileMove.enabled": "never",
+	"breadcrumbs.enabled": true,
+}
