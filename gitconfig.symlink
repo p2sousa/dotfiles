@@ -1,0 +1,35 @@
+[user]
+  name = Pablo Sousa
+  email = pablosousa.ads@gmail.com
+
+[init]
+  templatedir = ~/.dotfiles/git/templates/
+
+[push]
+  default = current
+
+[commit]
+  template = ~/.dotfiles/git/templates/commit
+
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+  grep = auto
+
+[log]
+  date = relative
+
+[core]
+  editor = vim
+  excludesfile = ~/.gitignore
+  attributesfile = ~/.gitattributes
+  hooksPath = ~/.dotfiles/git/hooks/
+
+[merge]
+  tool = vimdiff
+[github]
+  user = p2sousa
+
+[fetch]
+  prune = true
