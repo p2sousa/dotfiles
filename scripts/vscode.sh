@@ -20,11 +20,11 @@ if [ ! -d $VSCODE_DIR ]; then
   mkdir $VSCODE_DIR
 fi
 
-# while read EXTENSION
-# do
-#   echo "Install VSCode Extension: $EXTENSION"
-#   code --install-extension $EXTENSION
-# done < $DOTFILES/vscode/extensions.txt
+while read EXTENSION
+do
+  echo "Install VSCode Extension: $EXTENSION"
+  code --install-extension $EXTENSION
+done < $DOTFILES/vscode/extensions.txt
 
 ln -sf $DOTFILES/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
 ln -sf $DOTFILES/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
