@@ -14,8 +14,6 @@ echo "Installing essential tools..."
 sudo apt-get install -y htop ncdu silversearcher-ag
 
 echo "Installing development tools..."
-sudo apt-get install -y gcc llvm python python-pip python3 python3-pip
-
 # node
 sudo apt install nodejs
 sudo apt install npm
