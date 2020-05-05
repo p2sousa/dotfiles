@@ -13,15 +13,8 @@ sudo apt-get install -y zsh tmux coreutils openssl wget curl tree cmake dirmngr 
 echo "Installing essential tools..."
 sudo apt-get install -y htop ncdu silversearcher-ag
 
-download_and_install_binary https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping prettyping # prettyping
-download_and_install_binary https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy diff-so-fancy # diff-so-fancy
-
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
 echo "Installing development tools..."
 sudo apt-get install -y gcc llvm python python-pip python3 python3-pip
-
 
 # node
 sudo apt install nodejs
