@@ -38,7 +38,7 @@ stty -ixon
 export EDITOR=vim
 
 ### Added by Zplugin's installer
-source "$HOME/.zplugin/bin/zplugin.zsh"
+source "$HOME/.zinit/bin/zplugin.zsh"
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 ### End of Zplugin installer's chunk
@@ -84,3 +84,5 @@ if [[ "$TERM_PROGRAM" == "Hyper" ]]; then
   SPACESHIP_DIR_SHOW=false
   SPACESHIP_GIT_BRANCH_SHOW=false
 fi
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
