@@ -54,6 +54,7 @@ install_zsh_theme
 revert_zsh_file
 reload_zsh
 install_tweak_tool
+install_applucations
 
 # links
 source "${DIR}/links.sh"
@@ -95,4 +96,24 @@ function reload_zsh {
 function install_tweak_tool {
   sudo add-apt-repository universe
   sudo apt install gnome-tweak-tool
+}
+
+function install_applucations {
+  # slack
+  wget https://downloads.slack-edge.com/linux_releases/slack-desktop-4.0.2-amd64.deb
+  sudo apt install ./slack-desktop-*.deb
+  cat /etc/apt/sources.list.d/slack.list
+
+  # chrome
+  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  sudo apt install ./google-chrome-stable_current_amd64.deb
+
+  # vscode
+  curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+  sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
+  sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+
+  sudo apt-get install apt-transport-https
+  sudo apt-get update
+  sudo apt-get install code
 }
