@@ -1,20 +1,56 @@
 #!/bin/sh
-#
-# Homebrew
-#
-# This installs some of the common dependencies needed (or at least desired)
-# using Homebrew.
 
-# Check for Homebrew
-if test ! $(which brew)
-then
-  echo "  Installing Homebrew for you."
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
+brew bundle --global
 
-# Install homebrew packages
-# brew install grc coreutils spark
+# initializing taps and support commands
+brew "mas"
 
-brew doctor
-brew update
-brew upgrade
+# shell essentials
+brew "zsh"
+brew "tmux"
+brew "git"
+brew "coreutils"
+brew "openssl"
+brew "wget"
+brew "curl"
+brew "tree"
+brew "cmake"
+brew "yadm"
+brew "watch"
+
+# tools
+brew "prettyping"
+brew "htop"
+brew "ncdu"
+brew "fzf"
+brew "the_silver_searcher"
+brew "diff-so-fancy"
+brew "jq"
+
+# development tools
+brew "gcc"
+brew "llvm"
+brew "go"
+brew "node"
+brew "yarn"
+brew "python"
+brew "python3"
+cask "adoptopenjdk/openjdk/adoptopenjdk8"
+brew "ant"
+brew "maven"
+brew "scala"
+brew "sbt"
+cask "sequel-pro"
+
+# editors
+brew "vim"
+cask "visual-studio-code"
+
+# system essentials
+cask "iterm2"
+cask "docker"
+
+# applications
+cask "google-chrome"
+cask "slack"
+cask "spotify"
