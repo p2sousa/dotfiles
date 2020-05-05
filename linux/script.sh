@@ -1,4 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
+cd "$(dirname "$0")"
+set -e
+DIR=$(pwd)
 
 sudo apt update
 sudo apt upgrade
@@ -19,10 +22,6 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 echo "Installing development tools..."
 sudo apt-get install -y gcc llvm python python-pip python3 python3-pip
 
-# docker
-curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
-sudo apt-get update && sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 
 # node
 sudo apt install nodejs
@@ -49,12 +48,25 @@ wget https://github.com/bcicen/ctop/releases/download/v0.4.1/ctop-0.4.1-linux-am
 sudo mv ctop /usr/local/bin/
 sudo chmod +x /usr/local/bin/ctop
 
-install_oh_my_zsh
-install_zsh_theme
-revert_zsh_file
-reload_zsh
-install_tweak_tool
-install_applucations
+echo "Installing oh-my-zsh..."
+if [ ! -d "${HOME}/.oh-my-zsh" ]; then
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
+fi
+
+echo "Installing zplugin..."
+# install zplugin
+if [ ! -d "${HOME}/.zplugin" ]; then
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
+fi
+
+echo "Installing zsh theme..."
+ZSH_CUSTOM="${HOME}/.oh-my-zsh/custom/themes"
+mkdir -p $ZSH_CUSTOM
+curl -l https://raw.githubusercontent.com/dracula/zsh/master/dracula.zsh-theme > "${ZSH_CUSTOM}/dracula.zsh-theme"
+
+echo "Reverting .zshrc file..."
+mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
 
 # links
 source "${DIR}/links.sh"
@@ -62,58 +74,24 @@ source "${DIR}/links.sh"
 echo "Setting up zsh as default shell..."
 chsh -s $(which zsh)
 
+echo "Installing tweak..."
+sudo add-apt-repository universe
+sudo apt install gnome-tweak-tool
 
-function install_oh_my_zsh {
-  echo "Installing oh-my-zsh..."
-  if [ ! -d "${HOME}/.oh-my-zsh" ]; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
-  fi
+echo "Installing slack..."
+wget https://downloads.slack-edge.com/linux_releases/slack-desktop-4.0.2-amd64.deb
+sudo apt install ./slack-desktop-*.deb
+cat /etc/apt/sources.list.d/slack.list
 
-  # install zplugin
-  if [ ! -d "${HOME}/.zplugin" ]; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
-  fi
-}
+echo "Installing chrome..."
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install ./google-chrome-stable_current_amd64.deb
 
-function install_zsh_theme {
-  echo "Installing zsh theme..."
-  ZSH_CUSTOM="${HOME}/.oh-my-zsh/custom/themes"
-  mkdir -p $ZSH_CUSTOM
-  curl -l https://raw.githubusercontent.com/dracula/zsh/master/dracula.zsh-theme > "${ZSH_CUSTOM}/dracula.zsh-theme"
-}
+echo "Installing vscode..."
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
+sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 
-function revert_zsh_file {
-  echo "Reverting .zshrc file..."
-  mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
-}
-
-function reload_zsh {
-  echo "Reloading shell..."
-  exec zsh
-}
-
-function install_tweak_tool {
-  sudo add-apt-repository universe
-  sudo apt install gnome-tweak-tool
-}
-
-function install_applucations {
-  # slack
-  wget https://downloads.slack-edge.com/linux_releases/slack-desktop-4.0.2-amd64.deb
-  sudo apt install ./slack-desktop-*.deb
-  cat /etc/apt/sources.list.d/slack.list
-
-  # chrome
-  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-  sudo apt install ./google-chrome-stable_current_amd64.deb
-
-  # vscode
-  curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-  sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
-  sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-
-  sudo apt-get install apt-transport-https
-  sudo apt-get update
-  sudo apt-get install code
-}
+sudo apt-get install apt-transport-https
+sudo apt-get update
+sudo apt-get install code
