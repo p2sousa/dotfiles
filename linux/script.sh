@@ -30,7 +30,6 @@ sudo apt install gnome-tweak-tool
 echo "Installing slack..."
 wget https://downloads.slack-edge.com/linux_releases/slack-desktop-4.0.2-amd64.deb
 sudo apt install ./slack-desktop-*.deb
-cat /etc/apt/sources.list.d/slack.list
 
 echo "Installing chrome..."
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
