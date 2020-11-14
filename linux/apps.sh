@@ -27,5 +27,5 @@ sudo snap install phpstorm --classic
 echo "Installing vscode..."
 sudo snap install code --classic
 
-echo "Installing beekeeper..."
-sudo snap install beekeeper-studio
+echo "Installing mysql-workbench..."
+sudo snap install mysql-workbench-community
