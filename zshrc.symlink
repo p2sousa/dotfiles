@@ -16,7 +16,7 @@ plugins=(git)
 
 # User configuration
 
-PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/$HOME/.dotfiles/commands"
+PATH="${PATH}:$HOME/.dotfiles/commands"
 
 if [ -d "$HOME/.bin" ]; then
   PATH="$HOME/.bin:$PATH"
