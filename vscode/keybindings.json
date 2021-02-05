@@ -1,3 +1,23 @@
 // Place your key bindings in this file to override the defaults
 [
+  {
+    "key": "ctrl+shift+b",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "editor.action.revealDefinition"
+  },
+  {
+    "key": "ctrl+shift+alt+b",
+    "command": "workbench.action.tasks.build"
+  },
+  {
+    "key": "ctrl+shift+d",
+    "command": "editor.action.duplicateSelection"
+  },
+  {
+    "key": "ctrl+[BracketLeft]",
+    "command": "workbench.action.terminal.toggleTerminal"
+  }
 ]

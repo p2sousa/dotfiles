@@ -1,11 +1,18 @@
 {
 	"window.zoomLevel": 0,
-	"workbench.colorTheme": "Dracula",
+	"workbench.colorTheme": "Darcula Theme from IntelliJ",
 	"workbench.iconTheme": "material-icon-theme",
-	"editor.tabSize": 2,
+	"workbench.action.files.saveAll": true,
+
+  "editor.tabSize": 2,
+  // "editor.fontSize": 16,
+  // "editor.lineHeight": 26,
+  // "editor.fontFamily": "JetBrains Mono",
 	"editor.rulers": [80, 120],
-	"eslint.autoFixOnSave": true,
-	"editor.formatOnSave": false,
+  "editor.formatOnSave": false,
+  "editor.fontLigatures": true,
+  "editor.semanticHighlighting.enabled": false,
+  "eslint.autoFixOnSave": true,
 	"eslint.validate": [
 		{
 			"language": "javascript",
@@ -32,4 +39,8 @@
 	},
 	"javascript.updateImportsOnFileMove.enabled": "never",
 	"breadcrumbs.enabled": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	},
+	"workbench.editor.enablePreview": false,
 }
