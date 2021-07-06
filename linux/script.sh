@@ -47,6 +47,12 @@ php -r "if (hash_file('SHA384', 'composer-setup.php') === '$HASH') { echo 'Insta
 sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 rm composer-setup.php
 
+echo "Installing Golang..."
+wget  https://golang.org/dl/go1.16.5.linux-amd64.tar.gz -O golang
+sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf golang
+rm golang
+export PATH=$PATH:/usr/local/go/bin
+
 echo "Installing ctop..."
 # ctop
 wget https://github.com/bcicen/ctop/releases/download/v0.4.1/ctop-0.4.1-linux-amd64 -O ctop
