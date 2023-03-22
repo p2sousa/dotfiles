@@ -33,3 +33,9 @@
 
 [fetch]
   prune = true
+
+[includeIf "gitdir:~/go/src/bexs/"]
+  path = ~/go/src/bexs/.gitconfig
+
+[url "git@bitbucket.org:"]
+	insteadOf = https://bitbucket.org/

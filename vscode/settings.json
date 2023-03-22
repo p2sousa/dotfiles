@@ -1,5 +1,4 @@
 {
-	"window.zoomLevel": 0,
 	"workbench.colorTheme": "Darcula Theme from IntelliJ",
 	"workbench.iconTheme": "material-icon-theme",
 	"workbench.action.files.saveAll": true,
@@ -12,25 +11,6 @@
   "editor.formatOnSave": false,
   "editor.fontLigatures": true,
   "editor.semanticHighlighting.enabled": false,
-  "eslint.autoFixOnSave": true,
-	"eslint.validate": [
-		{
-			"language": "javascript",
-			"autoFix": true
-		},
-		{
-			"language": "javascriptreact",
-			"autoFix": true
-		},
-		{
-			"language": "typescript",
-			"autoFix": true
-		},
-		{
-			"language": "typescriptreact",
-			"autoFix": true
-		}
-	],
 	"emmet.includeLanguages": {
 		"javascript": "javascriptreact"
 	},
@@ -40,7 +20,34 @@
 	"javascript.updateImportsOnFileMove.enabled": "never",
 	"breadcrumbs.enabled": true,
 	"editor.codeActionsOnSave": {
-		"source.fixAll.eslint": true
+		"source.fixAll.eslint": true,
 	},
 	"workbench.editor.enablePreview": false,
+	"todo-tree.general.tags": [
+		"BUG",
+		"HACK",
+		"FIXME",
+		"TODO",
+		"XXX",
+		"[ ]",
+		"[x]"
+	],
+	"todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+	"tslint.packageManager": "yarn",
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"editor.renderControlCharacters": true,
+	"go.toolsManagement.autoUpdate": true,
+	"mssql.connections": [
+		{
+			"server": "{{put-server-name-here}}",
+			"database": "{{put-database-name-here}}",
+			"user": "{{put-username-here}}",
+			"password": ""
+		}
+	],
+	"redhat.telemetry.enabled": false,
+	"php.debug.ideKey": "VSCODE",
+	"[python]": {
+		"editor.formatOnType": true
+	},
 }
