@@ -28,14 +28,15 @@
 
 [merge]
   tool = vimdiff
-[github]
-  user = p2sousa
 
 [fetch]
   prune = true
 
-[includeIf "gitdir:~/go/src/bexs/"]
-  path = ~/go/src/bexs/.gitconfig
-
 [url "git@bitbucket.org:"]
 	insteadOf = https://bitbucket.org/
+
+[includeIf "gitdir:~/Developer/personal/"]
+    path = ~/Developer/personal/.gitconfig
+
+[includeIf "gitdir:~/Developer/company/"]
+    path = ~/Developer/company/.gitconfig
