@@ -5,28 +5,6 @@ cd "$(dirname "$0")"
 set -e
 DIR=$(pwd)
 
-# install homebrew if it's missing
-if ! command -v brew >/dev/null 2>&1; then
-  echo "Installing homebrew"
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
-
-# install mac configuration
-bash -c "./brew.sh"
-
-configure_vscode
-configure_terminal
-install_oh_my_zsh
-install_zsh_theme
-revert_zsh_file
-reload_zsh
-
-# links
-source "${DIR}/links.sh"
-
-# zsh as default shell
-chsh -sf $(which zsh)
-
 function configure_vscode {
   PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
@@ -59,11 +37,6 @@ function configure_terminal {
   defaults write -g KeyRepeat -int 1
   defaults write -g InitialKeyRepeat -int 10
 
-  # Install font
-  if [ ! -f "${HOME}/Library/Fonts/FiraCode.ttf" ]; then
-    wget https://raw.githubusercontent.com/tonsky/FiraCode/master/distr/ttf/FiraCode-Retina.ttf -O "${HOME}/Library/Fonts/FiraCode.ttf"
-  fi
-
   # install iterm profile
   if [ ! -d "${DIR}/../macos/themes/iterm" ]; then
     mkdir -p $DIR/../macos/themes/iterm/
@@ -85,7 +58,7 @@ function install_oh_my_zsh {
 
   # install zplugin
   if [ ! -d "${HOME}/.zplugin" ]; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
   fi
 }
 
@@ -105,3 +78,25 @@ function reload_zsh {
   echo "Reloading shell..."
   exec zsh
 }
+
+# install homebrew if it's missing
+if ! command -v brew >/dev/null 2>&1; then
+  echo "Installing homebrew"
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+# install mac configuration
+bash -c "./brew.sh"
+
+configure_vscode
+configure_terminal
+install_oh_my_zsh
+install_zsh_theme
+revert_zsh_file
+reload_zsh
+
+# links
+source "${DIR}/links.sh"
+
+# zsh as default shell
+chsh -sf $(which zsh)
